@@ -163,7 +163,7 @@
       b.style.top = i + "px";
       b.style.left = j + "px";
     }
-    b.addEventListener("mouseover", change);
+    b.addEventListener("mouseover" || "onclick", change);
 
     y.onclick = function() {
         p.remove();

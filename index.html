@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine Invitation</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 10%;
+        overflow: hidden;
+        display: flex;
+        background-color: rgb(187, 187, 187);
+      }
+
+      #yes {
+        position: absolute;
+        top: 62.7%;
+        left: 35%;
+        height: 5vh;
+        width: 15vw;
+        margin-right: 40px;
+        background-color: rgb(71, 255, 71);
+        box-shadow: 2px 2px 10px green, -2px -2px 5px green;
+        font-size: large;
+      }
+
+      #no {
+        display: block;
+        position: fixed;
+        top: 60%;
+        left: 50%;
+        height: 5vh;
+        width: 15vw;
+        margin: 20px;
+        background-color: rgb(250, 34, 34);
+        box-shadow: 2px 2px 10px red, -2px -2px 5px red;
+        font-size: large;
+      }
+
+      .gif1 {
+        position: absolute;
+        height: 40vh;        
+        width: 35vw;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50% , -50%);
+      }
+
+      .gif2 {
+        display: none;
+        position: absolute;
+        height: 40vh;        
+        width: 20vw;
+        min-height: 40vh;
+        min-width: 40vw;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50% , -50%);
+      }
+
+      #text {
+        position: absolute;
+        top: 50%;
+        left: 35%;
+        font-size: 3vw;
+        font-family: cursive;
+        margin: 0;
+      }
+
+      #text2 {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 35%;
+        font-size: 4vw;
+        font-family: cursive;
+      }
+
+    </style>
+  </head>
+  <body>
+    <p id="text"><b>Will you be my Valentine?</b></p>
+    <p id="text2"><b>Yey!! See you on 14</b></p>
+
+    <img class="gif1" src="https://media.tenor.com/2csFlkJ3TyAAAAAi/tkthao219-bubududu.gif" alt="gif1">
+    <img class="gif2" src="https://media.tenor.com/r-O2xbfTEWIAAAAi/bear-dance-no-background.gif" alt="">
+    
+    <button id="yes"><b>YES</b></button>
+    <button id="no"><B>NO</B></button>
+  </body>
+
+  <script>
+    const b = document.querySelector("#no");
+    const y = document.getElementById('yes');
+    const p = document.querySelector(".gif1");
+    const t = document.querySelector("#text");
+    const p2 = document.querySelector(".gif2");
+    const t2 = document.querySelector("#text2");
+
+    function change() {
+      let i = Math.floor(Math.random() * window.innerHeight - 200);
+      let j = Math.floor(Math.random() * window.innerWidth - 200);
+
+      i = Math.max(0, i);
+      j = Math.max(0, j);
+
+      b.style.top = i + "px";
+      b.style.left = j + "px";
+    }
+    b.addEventListener("mouseover", change);
+
+    y.onclick = function() {
+        p.remove();
+        t.remove();
+        b.remove();
+        y.remove();
+        p2.style.display = "block";
+        t2.style.display = "block";
+    }
+    
+  </script>
+</html>

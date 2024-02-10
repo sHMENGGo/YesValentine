@@ -30,7 +30,7 @@
         color: #FFFFFF;
         cursor: pointer;
         display: inline-block;
-        font-size: 1.3rem;
+        font-size: 20px;
         font-weight: 700;
         line-height: 20px;
         margin: 0;
@@ -48,7 +48,7 @@
       #no {
         display: block;
         position: fixed;
-        top: 71.5%;
+        top: 70%;
         left: 60%;
         right: 60%;
         appearance: button;
@@ -60,7 +60,7 @@
         color: #FFFFFF;
         cursor: pointer;
         display: inline-block;
-        font-size: 1.3rem;
+        font-size: 20px;
         font-weight: 700;
         line-height: 20px;
         outline: none;
@@ -68,6 +68,8 @@
         text-align: center;
         user-select: none;
         width: 80px;
+        margin: 40px;
+        transform: translate(-50%, -50%);
         box-shadow: 3px 3px 5px rgb(73, 73, 73);
         transition: top 0.1s ease-in-out, right 0.1s ease-in-out, left 0.1s ease-in-out;
       }
@@ -100,6 +102,53 @@
         margin: 0;
       }
 
+      .heart {
+        display: none;
+        position: absolute;
+        width: 10vh;
+        aspect-ratio: 1;
+        transform: translate(-50% , -50%);
+        margin: 0;
+        animation: up 8s infinite;
+        top: 70%;
+        z-index: -1;
+      }
+      .heart2 {
+        display: none;
+        position: absolute;
+        width: 10vh;
+        aspect-ratio: 1;
+        transform: translate(-50% , -50%);
+        margin: 0;
+        animation: up 5s infinite;
+        top: 70%;
+        left: 35%;
+        z-index: -2;
+      }
+      .heart3 {
+        display: none;
+        position: absolute;
+        width: 10vh;
+        aspect-ratio: 1;
+        transform: translate(-50% , -50%);
+        margin: 0;
+        animation: up 3s infinite;
+        top: 70%;
+        left: 60%;
+        z-index: -2;
+      }
+      @keyframes up {
+        0%, 30%, 60%, 90% {
+          transform: translateX(0);
+        }
+        15%, 45%, 75%, 100% {
+          transform: translateX(70px);
+        }
+        from {top: 110%;}
+        to {top: -10%;}
+      }
+      
+
       #text {
         position: absolute;
         top: 60%;
@@ -126,6 +175,11 @@
         color: transparent;
         background: linear-gradient(rgb(255, 0, 234), rgb(255, 0, 64));
         background-clip: text;
+        animation: bounce 1.5s infinite;
+      }
+      @keyframes bounce {
+        0%, 50%, 100% {transform: translateY(0)}
+        25%, 75% {transform: translateY(-20px)}
       }
 
     </style>
@@ -136,7 +190,10 @@
 
     <img class="gif1" src="https://media.tenor.com/2csFlkJ3TyAAAAAi/tkthao219-bubududu.gif" alt="gif1">
     <img class="gif2" src="https://media.tenor.com/r-O2xbfTEWIAAAAi/bear-dance-no-background.gif" alt="">
-    
+    <img class="heart" src="https://www.animationsoftware7.com/img/agifs/effect04.gif" alt="">
+    <img class="heart2" src="https://www.animationsoftware7.com/img/agifs/effect04.gif" alt="">
+    <img class="heart3" src="https://www.animationsoftware7.com/img/agifs/effect04.gif" alt="">
+
     <button id="yes"><b>YES</b></button>
     <button id="no"><B>NO</B></button>
   </body>
@@ -148,6 +205,9 @@
     const t = document.querySelector("#text");
     const p2 = document.querySelector(".gif2");
     const t2 = document.querySelector("#text2");
+    const heart = document.querySelector(".heart");
+    const heart2 = document.querySelector(".heart2");
+    const heart3 = document.querySelector(".heart3");
 
     function change() {
       let i = Math.floor(Math.random() * window.innerHeight - 200);
@@ -155,11 +215,18 @@
 
       i = Math.max(0, i);
       j = Math.max(0, j);
-
       
       b.style.top = i + "px";
       b.style.left = j + "px";
 
+      let currentWidth = parseInt(getComputedStyle(b).width);
+      let currentHeight = parseInt(getComputedStyle(b).height);
+      let currentPad = parseInt(getComputedStyle(b).padding);
+      let currentFont = parseInt(getComputedStyle(b).fontSize);
+      b.style.width = (currentWidth - 3.5) + "px";
+      b.style.height = (currentHeight - 2) + "px";
+      b.style.fontSize = (currentFont - 1.5) + "px";
+      b.style.padding = (currentPad - 2) + "px";
     }
     b.addEventListener("mouseover", change);
     b.addEventListener("click", change);
@@ -171,6 +238,9 @@
         y.remove();
         p2.style.display = "block";
         t2.style.display = "block";
+        heart.style.display = "block";
+        heart2.style.display = "block";
+        heart3.style.display = "block";
     }
     
   </script>
